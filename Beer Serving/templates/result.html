@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=1024">
+</head>
+<body>
+    <div class="header-bar">
+        <h1>Alcohol Consumption Predictor</h1>
+    </div>
+    <div class="main-layout">
+        <div class="left-panel">
+            <div class="panel-card">
+                <h2>Data Infographic</h2>
+                <img src="{{ url_for('static', filename='infographic.png') }}" alt="Infographics" class="big-plot">
+                <img src="{{ url_for('static', filename='continent_bar.png') }}" alt="Continent Plot" class="big-plot">
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="result-card">
+                <h2>Prediction Result</h2>
+                <ul class="input-values">
+                    <li><b>Beer Servings:</b> {{ beer }}</li>
+                    <li><b>Spirit Servings:</b> {{ spirit }}</li>
+                    <li><b>Wine Servings:</b> {{ wine }}</li>
+                    <li><b>Country:</b> {{ country }}</li>
+                    <li><b>Continent:</b> {{ continent }}</li>
+                </ul>
+                <div class="prediction-section">
+                    <h3>Predicted Total Litres of Pure Alcohol</h3>
+                    <div class="prediction-value">{{ prediction }}</div>
+                </div>
+                <a class="btn-wide" href="/">Predict Again</a>
+            </div>
+        </div>
+    </div>
+    <footer>Developed with Flask &bull; Desktop View</footer>
+</body>
+</html>

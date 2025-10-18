@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Alcohol Consumption Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=1024">
+</head>
+<body>
+    <div class="header-bar">
+        <h1>Alcohol Consumption Predictor</h1>
+    </div>
+    <div class="main-layout">
+        <div class="left-panel">
+            <div class="panel-card">
+                <h2>Data Infographic</h2>
+                <img src="{{ url_for('static', filename='infographic.png') }}" alt="Infographics" class="big-plot">
+                <img src="{{ url_for('static', filename='continent_bar.png') }}" alt="Continent Plot" class="big-plot">
+            </div>
+        </div>
+        <div class="right-panel">
+            <form class="form-card" method="post" action="/predict">
+                <h2>Enter Inputs</h2>
+                <div class="form-group">
+                    <label>Beer Servings:</label>
+                    <input type="number" name="beer_servings" required min="0" placeholder="Enter beer servings">
+                </div>
+                <div class="form-group">
+                    <label>Spirit Servings:</label>
+                    <input type="number" name="spirit_servings" required min="0" placeholder="Enter spirit servings">
+                </div>
+                <div class="form-group">
+                    <label>Wine Servings:</label>
+                    <input type="number" name="wine_servings" required min="0" placeholder="Enter wine servings">
+                </div>
+                <div class="form-group">
+                    <label>Country:</label>
+                    <select name="country" required>
+                        {% for item in countries %}
+                            <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Continent:</label>
+                    <select name="continent" required>
+                        {% for item in continents %}
+                            <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn-wide">Predict</button>
+            </form>
+        </div>
+    </div>
+    <footer>Developed with Flask &bull; Desktop View</footer>
+</body>
+</html>
